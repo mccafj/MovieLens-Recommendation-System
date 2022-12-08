@@ -2,47 +2,71 @@
 
 Authors: Samuel Robins, Jon McCaffrey
 
-Build a model that provides top 5 movie recommendations to a user, based on their ratings of other movies.
+# Contents
 
-You will need to create the specific details about how the user will provide their ratings of other movies, in addition to formulating a more specific business problem within the general context of "recommending movies".
+### 1. [Overview](#overview)
+### 2. [Business and Data Understanding](#bidness)
+### 3. [Data Preparation](#dataprep)
+### 4. [Modeling](#modeling)
+### 5. [Final Model Evaluation](#final)
+### 6. [Summary](#summary)
 
-At minimum, your recommendation system must use collaborative filtering. If you have time, consider implementing a hybrid approach, e.g. using collaborative filtering as the primary mechanism, but using content-based filtering to address the cold start problem Links to an external site..
+![image1](./images/movie_covers.jpg)
 
-The MovieLens dataset has explicit ratings, so achieving some sort of evaluation of your model is simple enough. But you should give some thought to the question of metrics. Since the rankings are ordinal, we know we can treat this like a regression problem. But when it comes to regression metrics there are several choices: RMSE, MAE, etc.
+<a id='overview'></a>
 
-Overview / initial summary (~250 wds)
-- business / data understanding - what kind of data are you using?  and what makes it well-suited for the business problem
-- data prep - why did you choose the data prep steps that you did?  and what was the result
-- modeling - what modeling packages did you use, which models within the packages, and what tuning steps did you take?
-- evaluation - How well did your model perform?  Relevant metrics.  Validation approach
+# Overview
+
+Using the __["small" dataset](https://grouplens.org/datasets/movielens/latest/)__ from __[MovieLens](https://movielens.org/)__, which contains explicit user ratings, movie titles, genres, etc., we were able to produce a model-based collaborative filtering recommendation system that allows for user input and will return the top 5 recommendations of movies from the dataset that the use has not yet rated.  Our process involved using the Surprise Python scikit library to process data and iterate through multiple recommender algorithms (including SVD and SVD++), using GridSearch, cross-validation and RMSE to decide on our best-performing model.  Our final model used a tuned SVD algorithm with an RMSE of 0.8464.  We also create a content-based filtering model, using TF-IDF Vectorizer and cosine similarity, to address the "cold start" problem inherent in collaborative filtering models.  With this model, a user who is not already in the dataset can input a known movie from the dataset and be returned 5 movie recommendations to choose from.
+
+<a id='bidness'></a>
+
+# Business and Data Understanding
+
+The MovieLens small dataset contains 100,836 user ratings from 610 different users, each of whom contributed at least 20 ratings.  A total of 9,742 movie titles are included in this dataset.  There are two additional .csv files contained within the package download that we did not end up using.  One file contained 3,683 tags ("a single word or short phrase") that users applied with their numerical rating, which represented less than 4% of the total ratings in the dataset.  The other file contained links of each movie in the dataset to its listing on __[The Movie Database](https://www.themoviedb.org/)__ or on the __[Internet Movie Database](https://www.imdb.com/)__
+
+The MovieLens dataset was specifically developed with recommendation system building in mind.  The data contains explicit user ratings, movie titles, and genres with consistent user ID and movie ID indices across files.  The business problem we were tasked with was to "build a model that provides top 5 movie recommendations to a user, based on their ratings of other movies".  Though movie recommendation systems are now common-place in the streaming apps we have available, understanding the architecture of these everyday models may allow us to expand their use into other realms, or at least refine what a model can currently provide, with the goal of delivering the most refined experience to an individual user.  
+
+Citation included in the dataset's README.txt:  
+F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4: 19:1–19:19. <https://doi.org/10.1145/2827872>
+
+Additional citations included in our notebook.
+
+<a id='dataprep'></a>
+
+# Data Preparation:
 
 
-Business and Data Understanding
+
+<a id='modeling'></a>
+
+# Modeling
 
 
-Data preparation: feature engineering, using pipelines or using unsupervised techniques
 
 
-Modeling: rationale, results, limitations, and recommendations
-- using models from multiple different packages or model explainability tools
+<a id='final'></a>
 
-Rationale
+# Final Model Evaluation
 
-Results
 
-Limitations / recommendations
+![Comparison of RMSEs from all algorithms tested](./images/suprise_models_bar.png)
 
-Evaluation (ending summary)
+<a id='summary'></a>
+
+# Summary
+
+
 
 For More Information
-Please review our full analysis in our Jupyter Notebook or our presentation.
+Please review the full analysis in our __[Jupyter Notebook](https://github.com/mccafj/MovieLens-Recommendation-System/blob/main/Final%20Notebook%20MovieLens%20Recommendation%20System.ipynb)__ or the __[PDF of our slide presentation.]()__
 
-For any additional questions, please contact Andrew Boucher aboucher1360@gmail.com or Jon McCaffrey jonmccaffrey524@gmail.com
+For any additional questions, please contact Samuel Robins sammyrobins305@gmail.com or Jon McCaffrey jonmccaffrey524@gmail.com
 
 Repository Structure
 
-├── README.md
-├──  .ipynb  <- Main notebook for project code
-├──  slides.pdf      <- PDF of slides for our presentation
-├── Data			                          <- Location of raw dataset
-└── Images                              <- images used and generated in the project
+###### ├── __[README.md](https://github.com/mccafj/MovieLens-Recommendation-System#readme)__
+###### ├── __[Final Notebook MovieLens Recommendation System.ipynb](https://github.com/mccafj/MovieLens-Recommendation-System/blob/main/Final%20Notebook%20MovieLens%20Recommendation%20System.ipynb)__  <- Main notebook for project code
+###### ├── __[slides.pdf]()__      <- PDF of slides for our presentation
+###### ├── __[Data](https://github.com/mccafj/MovieLens-Recommendation-System/tree/main/data)__			                          <- Location of raw dataset
+###### └── __[Images](https://github.com/mccafj/MovieLens-Recommendation-System/tree/main/images)__                              <- images used and generated in the project
