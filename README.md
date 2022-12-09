@@ -1,6 +1,6 @@
 # MovieLens Recommendation System
 
-Authors: Samuel Robins, Jon McCaffrey
+Author: Jon McCaffrey
 
 # Contents
 
@@ -17,7 +17,7 @@ Authors: Samuel Robins, Jon McCaffrey
 
 # Overview
 
-Using the __["small" dataset](https://grouplens.org/datasets/movielens/latest/)__ from __[MovieLens](https://movielens.org/)__, which contains explicit user ratings, movie titles, genres, etc., we were able to produce a model-based collaborative filtering recommendation system that allows for user input and will return the top 5 recommendations of movies from the dataset that the use has not yet rated.  Our process involved using the Surprise Python scikit library to process data and iterate through multiple recommender algorithms (including SVD and SVD++), using GridSearch, cross-validation and root mean square error (RMSE) to decide on our best-performing model.  Our final model used a tuned SVD algorithm with an RMSE of 0.8457.  We also created a content-based filtering model, using TF-IDF Vectorizer and cosine similarity, to address the "cold start" problem inherent in collaborative filtering models.  With this model, a user who is not already in the dataset can input a known movie from the dataset and be returned 5 movie recommendations to choose from.
+Using the __["small" dataset](https://grouplens.org/datasets/movielens/latest/)__ from __[MovieLens](https://movielens.org/)__, which contains explicit user ratings, movie titles, genres, etc., we were able to produce a model-based collaborative filtering recommendation system that allows for user input and will return the top 5 recommendations of movies from the dataset that the user has not yet rated.  Our process involved using the Surprise Python scikit library to process data and iterate through multiple recommender algorithms (including SVD and SVD++), using GridSearch, cross-validation and root mean square error (RMSE) to decide on our best-performing model.  Our final model used a tuned SVD algorithm with an RMSE of 0.8457.  We also created a content-based filtering model, using TF-IDF Vectorizer and cosine similarity, to address the "cold start" problem inherent in collaborative filtering models.  With this model, a user who is not already in the dataset can input a known movie from the dataset and be returned 5 movie recommendations to choose from.
 
 <a id='bidness'></a>
 
@@ -62,11 +62,11 @@ To be thorough, we also considered Non-negative Matrix Factorization (NMF), as w
 
 # Final Model Evaluation
 
-To evaluate our final model on the full dataset and actually create a recommendation system, we had additional steps to complete.  First we built our full trainset and fit it  our best model on it.  Then we returned to Pandas dataframe and created a separate dataframe that contained each movie only once.  Next, we were able to create a separate list for a given user that contained the movies they'd already seen, and a separate dataframe of the movies they had not yet seen.  We were able to incorporate that information into a function that would return the top 5 movies for any given user that they had not yet seen.  
+To evaluate our final model on the full dataset and actually create a recommendation system, we had additional steps to complete.  First we built our full trainset and fit it our best model on it.  Then we returned to the main Pandas dataframe and created a separate dataframe that contained each movie only once.  Next, we were able to create a separate list for a given user that contained the movies they'd *already* seen, and a separate dataframe of the movies they had **not** yet seen.  We were able to incorporate that information into a function that would return the top 5 movies for any given user that they had not yet seen.  
 
-One limitation of any recommendation system (ours included) is the quality of the user input.  This could include rater bias (always rating highly, or consistently rating every at a low score).  It may also be beneficial to have a wider rating scale (e.g. 0-10) to allow for more granularity.  The user-generated tags are also a good idea for additional refinement of the recommendation, but <4% of our dataset contained them.  
+One limitation of any recommendation system (ours included) is the quality of the user input.  This could include rater bias (always rating highly, or consistently rating every movie at a low score).  It may also be beneficial to have a wider rating scale (e.g. 0-10) to allow for more granularity.  The user-generated tags are also a good idea for additional refinement of the recommendation, but <4% of our dataset contained them.  
 
-Specifically related to model-based collaborative filtering, it is dependent on explicit user ratings, and would be unable to provide recommendations for a new user with no ratings to refer to.  To be able to offer recommendations even to a new user, we took the ooportunity to create a content-based filter, using genre-information on each movie.  This involved utilizing sklearn's TF-IDF Vectorizer and cosine similarity.  By finding the top 5 movies with the closest similarity (in genre) to a favorite movie inputted by the user, we were able to provide recommendations even for a user who has no prior movie ratings listed in the dataset.  
+Specifically related to model-based collaborative filtering, it is dependent on explicit user ratings, and would be unable to provide recommendations for a new user with no ratings to which to refer.  To be able to offer recommendations even to a new user, we took the opportunity to create a content-based filter, using genre information on each movie in the unique movie dataset.  This involved utilizing sklearn's TF-IDF Vectorizer and cosine similarity.  By finding the top 5 movies with the closest similarity (in genre) to a favorite movie inputted by the user, we were able to provide recommendations even for a user who has no prior movie ratings listed in the dataset.  
 
 <a id='summary'></a>
 
@@ -83,7 +83,7 @@ For any additional questions, please contact Samuel Robins sammyrobins305@gmail.
 Repository Structure
 
 ###### ├── __[README.md](https://github.com/mccafj/MovieLens-Recommendation-System#readme)__
-###### ├── __[Final Notebook MovieLens Recommendation System.ipynb](https://github.com/mccafj/MovieLens-Recommendation-System/blob/main/Final%20Notebook%20MovieLens%20Recommendation%20System.ipynb)__  <- Main notebook for project code
-###### ├── __[slides.pdf]()__      <- PDF of slides for our presentation
+###### ├── __[Final MovieLens notebook.ipynb](https://github.com/mccafj/MovieLens-Recommendation-System/blob/main/MovieLens%20notebook.ipynb)__  <- Main notebook for project code
+###### ├── __[Final slides.pdf]()__      <- PDF of slides for our presentation
 ###### ├── __[Data](https://github.com/mccafj/MovieLens-Recommendation-System/tree/main/data)__			                          <- Location of raw dataset
 ###### └── __[Images](https://github.com/mccafj/MovieLens-Recommendation-System/tree/main/images)__                              <- images used and generated in the project
