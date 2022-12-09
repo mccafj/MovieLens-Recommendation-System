@@ -76,14 +76,14 @@ In summary, we were tasked with creating a top 5 movie recommendation system to 
 
 
 For More Information
-Please review the full analysis in our __[Jupyter Notebook](https://github.com/mccafj/MovieLens-Recommendation-System/blob/main/Final%20Notebook%20MovieLens%20Recommendation%20System.ipynb)__ or the __[PDF of our slide presentation.]()__
+Please review the full analysis in our __[Jupyter Notebook](https://github.com/mccafj/MovieLens-Recommendation-System/blob/main/Final%20Notebook%20MovieLens%20Recommendation%20System.ipynb)__ or the __[PDF of our slide presentation.](https://github.com/mccafj/MovieLens-Recommendation-System/blob/main/Final%20slides.pdf)__
 
-For any additional questions, please contact Samuel Robins sammyrobins305@gmail.com or Jon McCaffrey jonmccaffrey524@gmail.com
+For any additional questions, please contact Jon McCaffrey jonmccaffrey524@gmail.com
 
 Repository Structure
 
 ###### ├── __[README.md](https://github.com/mccafj/MovieLens-Recommendation-System#readme)__
 ###### ├── __[Final MovieLens notebook.ipynb](https://github.com/mccafj/MovieLens-Recommendation-System/blob/main/MovieLens%20notebook.ipynb)__  <- Main notebook for project code
-###### ├── __[Final slides.pdf]()__      <- PDF of slides for our presentation
+###### ├── __[Final slides.pdf](https://github.com/mccafj/MovieLens-Recommendation-System/blob/main/Final%20slides.pdf)__      <- PDF of slides for our presentation
 ###### ├── __[Data](https://github.com/mccafj/MovieLens-Recommendation-System/tree/main/data)__			                          <- Location of raw dataset
 ###### └── __[Images](https://github.com/mccafj/MovieLens-Recommendation-System/tree/main/images)__                              <- images used and generated in the project
